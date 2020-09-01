@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NC file generator", "NC file generator.csproj", "{DC61A96C-6C93-4A44-A861-F0F3EE5A1C2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC61A96C-6C93-4A44-A861-F0F3EE5A1C2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC61A96C-6C93-4A44-A861-F0F3EE5A1C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC61A96C-6C93-4A44-A861-F0F3EE5A1C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC61A96C-6C93-4A44-A861-F0F3EE5A1C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CB84589-4C87-4773-8939-3C82A396CC36}
+	EndGlobalSection
+EndGlobal
