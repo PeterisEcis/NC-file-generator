@@ -1,0 +1,10 @@
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\obj\Debug\NC file generator.csprojAssemblyReference.cache
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\obj\Debug\NC_file_generator.Form1.resources
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\obj\Debug\NC_file_generator.Properties.Resources.resources
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\obj\Debug\NC file generator.csproj.GenerateResource.cache
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\obj\Debug\NC file generator.csproj.CoreCompileInputs.cache
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\bin\Debug\NC file generator.exe.config
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\bin\Debug\NC file generator.exe
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\bin\Debug\NC file generator.pdb
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\obj\Debug\NC file generator.exe
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\obj\Debug\NC file generator.pdb
