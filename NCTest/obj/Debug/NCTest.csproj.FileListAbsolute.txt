@@ -1,0 +1,17 @@
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\bin\Debug\NCTest.dll
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\bin\Debug\NCTest.pdb
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\bin\Debug\NC file generator.exe
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\bin\Debug\NC file generator.pdb
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\bin\Debug\NC file generator.exe.config
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\obj\Debug\NCTest.csprojAssemblyReference.cache
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\obj\Debug\NCTest.csproj.CoreCompileInputs.cache
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\obj\Debug\NCTest.csproj.CopyComplete
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\obj\Debug\NCTest.dll
+C:\Users\peteris.ecis\Documents\GitHub\NC-file-generator\NCTest\obj\Debug\NCTest.pdb
