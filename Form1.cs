@@ -40,7 +40,7 @@ namespace NC_file_generator
             string filePath = textBox1.Text;
             if (File.Exists(filePath))
             {
-                NCFile.GenerateFiles(filePath);
+                NCFile.GenerateAllFiles(filePath);
             }
             else
             {

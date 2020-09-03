@@ -137,4 +137,119 @@ namespace NCTest
             Assert.AreEqual(0, result.Count);
         }
     }
+
+    [TestClass]
+    public class MainFile
+    {
+        [TestMethod]
+        public void FindMainFile()
+        {
+            var fileName1 = "test_webs.nc";
+            var fileName2 = "test.nc";
+            var result = NCFile.FindMainFile(fileName1, fileName2);
+            Assert.AreEqual(fileName2, result);
+        }
+    }
+
+    [TestClass]
+    public class Header
+    {
+        [TestMethod]
+        public void GetProfileForFile1()
+        {
+            string fullProfile = "  UHQ320*8-25*200-20*496-6";
+            string Expected = "  PL8";
+            string result = NCFile.GetPlateProfile(fullProfile, 1);
+            Assert.AreEqual(Expected, result);
+        }
+
+        [TestMethod]
+        public void GetProfileForFile3()
+        {
+            string fullProfile = "  UHQ320*8-25*200-20*496-6";
+            string Expected = "  PL25";
+            string result = NCFile.GetPlateProfile(fullProfile, 3);
+            Assert.AreEqual(Expected, result);
+        }
+
+        [TestMethod]
+        public void GetProfileForFile4()
+        {
+            string fullProfile = "  UHQ320*8-25*200-20*496-6";
+            string Expected = "  PL20";
+            string result = NCFile.GetPlateProfile(fullProfile, 4);
+            Assert.AreEqual(Expected, result);
+        }
+
+        [TestMethod]
+        public void GetProfileHeightForFile1()
+        {
+            string fullProfile = "  UHQ320*6-15*150-10*317-4-15";
+            string Expected = "     310.00";
+            string result = NCFile.GetProfileHeight(fullProfile, 1);
+            Assert.AreEqual(Expected, result);
+        }
+
+        [TestMethod]
+        public void GetProfileHeightForFile3()
+        {
+            string fullProfile = "  UHQ320*8-25*200-20*496-6";
+            string Expected = "     200.00";
+            string result = NCFile.GetProfileHeight(fullProfile, 3);
+            Assert.AreEqual(Expected, result);
+        }
+
+        [TestMethod]
+        public void GetProfileHeightForFile4()
+        {
+            string fullProfile = "  UHQ320*8-25*200-20*496-6";
+            string Expected = "     496.00";
+            string result = NCFile.GetProfileHeight(fullProfile, 4);
+            Assert.AreEqual(Expected, result);
+        }
+
+        [TestMethod]
+        public void GetProfileHeightDiff()
+        {
+            string fullProfile = "UHQ320*6-15*150-10*317-4-15";
+            string fullProfile1 = "UHQ320*6-10*150-10*317-4-15";
+            string fullProfile2 = "UHQ320*6-33*150-10*317-14-15";
+            double expected = 10;
+            double expected1 = 6;
+            double expected2 = 20;
+            double result = NCFile.GetProfileHeightDiff(fullProfile);
+            double result1 = NCFile.GetProfileHeightDiff(fullProfile1);
+            double result2 = NCFile.GetProfileHeightDiff(fullProfile2);
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected1, result1);
+            Assert.AreEqual(expected2, result2);
+        }
+
+        [TestMethod]
+        public void GetThicknessForFile1()
+        {
+            string fullProfile = "  UHQ320*8-25*200-20*496-6";
+            string expected = "       8.00";
+            string result = NCFile.GetThickness(fullProfile, 1);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void GetThicknessForFile3()
+        {
+            string fullProfile = "  UHQ320*8-25*200-20*496-6";
+            string expected = "      25.00";
+            string result = NCFile.GetThickness(fullProfile, 3);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void GetThicknessForFile4()
+        {
+            string fullProfile = "  UHQ320*8-25*200-20*496-6";
+            string expected = "      20.00";
+            string result = NCFile.GetThickness(fullProfile, 4);
+            Assert.AreEqual(expected, result);
+        }
+    }
 }
