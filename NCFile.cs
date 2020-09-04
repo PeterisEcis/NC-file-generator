@@ -12,9 +12,9 @@ namespace NC_file_generator
 {
     public class NCFile
     {
-        public static void GenerateAllFiles(string path1) {
+        public static void GenerateAllFiles(string path1, string targetPath)
+        {
             string path2 = GetSecondFilePath(path1);
-            const string TARGET_PATH = "M:\\4_ATTISTIBA\\II_BIM\\II-87\\0_Task\\NC_faili\\Testing";
 
             //Sakārto lai galvenais fails vienmēr būtu kā path1
             string MainFilePath = FindMainFile(path1, path2);
@@ -22,6 +22,11 @@ namespace NC_file_generator
             {
                 path2 = path1;
                 path1 = MainFilePath;
+            }
+
+            if (!Directory.Exists(targetPath))
+            {
+                targetPath = GetDirectoryFromPath(path1);
             }
 
             //Reading Files
@@ -37,11 +42,11 @@ namespace NC_file_generator
                 MessageBox.Show("File " + path2 + " is empty", "Error", MessageBoxButtons.OK);
             }
             else {
-                GenerateFile1(file1Content, file2Content, TARGET_PATH);
-                GenerateFile2(file1Content, file2Content, TARGET_PATH);
-                GenerateFile3(file1Content, file2Content, TARGET_PATH);
-                GenerateFile4(file1Content, file2Content, TARGET_PATH);
-                MessageBox.Show("Files successfully generated at: " + TARGET_PATH, "Success!", MessageBoxButtons.OK);
+                GenerateFile1(file1Content, file2Content, targetPath);
+                GenerateFile2(file1Content, file2Content, targetPath);
+                GenerateFile3(file1Content, file2Content, targetPath);
+                GenerateFile4(file1Content, file2Content, targetPath);
+                MessageBox.Show("Files successfully generated at: " + targetPath, "Success!", MessageBoxButtons.OK);
             }
         }
 
@@ -75,6 +80,15 @@ namespace NC_file_generator
             string[] tempArr = filePath.Split('\\');
             fileName = tempArr[tempArr.Length - 1];
             return fileName;
+        }
+
+        public static string GetDirectoryFromPath(string filePath)
+        {
+            string DirPath;
+            string[] strArr = filePath.Split('\\');
+            Array.Resize(ref strArr, strArr.Length - 1);
+            DirPath = string.Join("\\", strArr);
+            return DirPath;
         }
 
         public static List<string> ReadFile(string path) {

@@ -252,4 +252,18 @@ namespace NCTest
             Assert.AreEqual(expected, result);
         }
     }
+
+    [TestClass]
+
+    public class TargetDir
+    {
+        [TestMethod]
+        public void GetDirectoryFromPath()
+        {
+            string path = "M:\\4_ATTISTIBA\\II_BIM\\II-87\\0_Task\\NC_faili\\RG1D-3.nc";
+            string expected = "M:\\4_ATTISTIBA\\II_BIM\\II-87\\0_Task\\NC_faili";
+            string result = NCFile.GetDirectoryFromPath(path);
+            Assert.AreEqual(expected, result);
+        }
+    }
 }

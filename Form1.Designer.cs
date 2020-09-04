@@ -34,6 +34,11 @@ namespace NC_file_generator
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // button1
@@ -60,7 +65,7 @@ namespace NC_file_generator
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(164, 92);
+            this.button2.Location = new System.Drawing.Point(157, 120);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(84, 23);
             this.button2.TabIndex = 2;
@@ -68,11 +73,50 @@ namespace NC_file_generator
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Select main .nc file";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(34, 85);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(262, 22);
+            this.textBox2.TabIndex = 4;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(311, 80);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(33, 27);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "...";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(34, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(192, 17);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Select target folder (optional)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 139);
+            this.ClientSize = new System.Drawing.Size(394, 155);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
@@ -89,6 +133,11 @@ namespace NC_file_generator
         private TextBox textBox1;
         private OpenFileDialog openFileDialog1;
         private Button button2;
+        private Label label1;
+        private TextBox textBox2;
+        private Button button3;
+        private Label label2;
+        private FolderBrowserDialog folderBrowserDialog1;
     }
 }
 

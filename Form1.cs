@@ -17,6 +17,7 @@ namespace NC_file_generator
             var filePath = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
                 //openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Title = "Select main .nc file";
                 openFileDialog.Filter = "NC files (*.nc)|*.nc";
                 openFileDialog.RestoreDirectory = true;
 
@@ -38,14 +39,33 @@ namespace NC_file_generator
         private void button2_Click(object sender, EventArgs e)
         {
             string filePath = textBox1.Text;
+            string targetPath = textBox2.Text;
             if (File.Exists(filePath))
             {
-                NCFile.GenerateAllFiles(filePath);
+                NCFile.GenerateAllFiles(filePath, targetPath);
             }
             else
             {
                 MessageBox.Show("Invalid file path!\nPlease select valid file!", "Error", MessageBoxButtons.OK);   
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var filePath = string.Empty;
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                //openFileDialog.InitialDirectory = "c:\\";
+                //folderBrowserDialog.RootFolder = textBox1.Text;
+
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = folderBrowserDialog.SelectedPath;
+                }
+
+            }
+            textBox2.Text = filePath;
         }
     }
 }
