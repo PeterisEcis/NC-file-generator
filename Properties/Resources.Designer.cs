@@ -63,6 +63,26 @@ namespace NC_file_generator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] RG1D_22 {
+            get {
+                object obj = ResourceManager.GetObject("RG1D_22", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] RG1D_22_webs {
+            get {
+                object obj = ResourceManager.GetObject("RG1D_22_webs", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] test {
             get {
                 object obj = ResourceManager.GetObject("test", resourceCulture);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Windows.Forms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NC_file_generator;
@@ -265,5 +266,92 @@ namespace NCTest
             string result = NCFile.GetDirectoryFromPath(path);
             Assert.AreEqual(expected, result);
         }
+    }
+
+    [TestClass]
+
+    public class DataGeneration
+    {
+        [TestMethod]
+        public void GetLineNr2()
+        {
+            var fileContent = NCFile.ReadFile("C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22.nc");
+            int expected = 26;
+            int result = NCFile.GetLineNr(2, fileContent);
+            Assert.AreEqual(expected, result);
+        }
+        [TestMethod]
+        public void GetLineNr3()
+        {
+            var fileContent = NCFile.ReadFile("C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22.nc");
+            int expected = 32;
+            int result = NCFile.GetLineNr(3, fileContent);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void GetLineNr4()
+        {
+            var fileContent = NCFile.ReadFile("C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22.nc");
+            int expected = 38;
+            int result = NCFile.GetLineNr(4, fileContent);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void GetLineNr1()
+        {
+            var fileContent = NCFile.ReadFile("C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22.nc");
+            int expected = 44;
+            int result = NCFile.GetLineNr(1, fileContent);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void GetLineNr()
+        {
+            var fileContent = NCFile.ReadFile("C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22.nc");
+            int expected = -1;
+            int result = NCFile.GetLineNr(5, fileContent);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void GetPosition()
+        {
+            string line = "  o       0.00s     21.00       0.00       0.00       0.00       0.00       0.00";
+            int expected = 20;
+            int result = NCFile.GetPosition(line);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void ReadCoord()
+        {
+            string line = "  o       0.00s     21.00       0.00       0.00       0.00       0.00       0.00";
+            double expected = 21.00;
+            double result = NCFile.ReadCoord(line);
+            Assert.AreEqual(expected, result);
+        }
+
+        //[TestMethod]
+
+        //public void ChangeCoord()
+        //{
+        //    var data = new List<string>();
+        //    data.Add("  v       0.00o     10.00       0.00       0.00       0.00       0.00       0.00");
+        //    data.Add("      12064.00      10.00       0.00       0.00       0.00       0.00       0.00");
+        //    data.Add("      12064.00     324.00       0.00       0.00       0.00       0.00       0.00");
+        //    data.Add("          0.00     324.00       0.00       0.00       0.00       0.00       0.00");
+        //    data.Add("          0.00      10.00       0.00       0.00       0.00       0.00       0.00");
+        //    var expected = new List<string>();
+        //    expected.Add("  v       0.00o      0.00       0.00       0.00       0.00       0.00       0.00");
+        //    expected.Add("      12064.00       0.00       0.00       0.00       0.00       0.00       0.00");
+        //    expected.Add("      12064.00     314.00       0.00       0.00       0.00       0.00       0.00");
+        //    expected.Add("          0.00     314.00       0.00       0.00       0.00       0.00       0.00");
+        //    expected.Add("          0.00       0.00       0.00       0.00       0.00       0.00       0.00");
+        //    var result = NCFile.ChangeCoordinates(data);
+        //    Assert.AreEqual(expected, result);
+        //}
     }
 }

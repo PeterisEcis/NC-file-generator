@@ -55,12 +55,8 @@ namespace NC_file_generator
             var filePath = string.Empty;
             using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
             {
-                //openFileDialog.InitialDirectory = "c:\\";
-                //folderBrowserDialog.RootFolder = textBox1.Text;
-
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
-                    //Get the path of specified file
                     filePath = folderBrowserDialog.SelectedPath;
                 }
 
