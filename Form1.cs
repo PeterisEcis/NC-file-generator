@@ -15,20 +15,22 @@ namespace NC_file_generator
         private void button1_Click(object sender, EventArgs e)
         {
             var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
-                //openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Title = "Select main .nc file";
-                openFileDialog.Filter = "NC files (*.nc)|*.nc";
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                if(textBox1.Text != "" && Directory.Exists(textBox1.Text))
                 {
-                    //Get the path of specified file
-                    filePath = openFileDialog.FileName;
+                    folderBrowserDialog.SelectedPath = textBox1.Text;
+                }
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = folderBrowserDialog.SelectedPath;
                 }
 
             }
-            textBox1.Text = filePath;
+            if (Directory.Exists(filePath))
+            {
+                textBox1.Text = filePath;
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -38,15 +40,31 @@ namespace NC_file_generator
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string filePath = textBox1.Text;
-            string targetPath = textBox2.Text;
-            if (File.Exists(filePath))
+            string sourceDir = textBox1.Text;
+            string targetDir = textBox2.Text;
+            if (Directory.Exists(sourceDir))
             {
-                NCFile.GenerateAllFiles(filePath, targetPath);
+                string[] filePaths = Directory.GetFiles(sourceDir, "*.nc");
+                if (filePaths.Length == 0) MessageBox.Show("No .nc files were found in " + sourceDir, "Error", MessageBoxButtons.OK);
+                foreach (string path in filePaths)
+                {
+                    if (!path.Contains("_webs"))
+                    {
+                        string path2 = NCFile.GetSecondFilePath(path);
+                        if (File.Exists(path2))
+                        {
+                            NCFile.GenerateAllFiles(path,path2,targetDir);
+                        }
+                        else
+                        {
+                            MessageBox.Show("_webs file for " + NCFile.GetFileNameFromPath(path) + " was not found", "Error", MessageBoxButtons.OK);
+                        }
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("Invalid file path!\nPlease select valid file!", "Error", MessageBoxButtons.OK);   
+                MessageBox.Show("Invalid file path!\nPlease select valid file!", "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -55,13 +73,20 @@ namespace NC_file_generator
             var filePath = string.Empty;
             using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
             {
+                if (textBox1.Text != "" && Directory.Exists(textBox1.Text))
+                {
+                    folderBrowserDialog.SelectedPath = textBox1.Text;
+                }
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = folderBrowserDialog.SelectedPath;
                 }
 
             }
-            textBox2.Text = filePath;
+            if (Directory.Exists(filePath))
+            {
+                textBox2.Text = filePath;
+            }
         }
     }
 }

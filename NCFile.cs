@@ -12,27 +12,17 @@ namespace NC_file_generator
 {
     public class NCFile
     {
-        public static void GenerateAllFiles(string path1, string targetPath)
+        public static void GenerateAllFiles(string path1, string path2, string targetDir)
         {
-            string path2 = GetSecondFilePath(path1);
-
-            //Sakārto lai galvenais fails vienmēr būtu kā path1
-            string MainFilePath = FindMainFile(path1, path2);
-            if (MainFilePath == path2)
+            if (!Directory.Exists(targetDir))
             {
-                path2 = path1;
-                path1 = MainFilePath;
-            }
-
-            if (!Directory.Exists(targetPath))
-            {
-                targetPath = GetDirectoryFromPath(path1);
+                targetDir = GetDirectoryFromPath(path1);
             }
 
             //Reading Files
             List<string> file1Content = ReadFile(path1);
             List<string> file2Content = ReadFile(path2);
-
+            
             if (file1Content.Count == 0)
             {
                 MessageBox.Show("File " + path1 + " is empty", "Error", MessageBoxButtons.OK);
@@ -46,14 +36,14 @@ namespace NC_file_generator
                 bool flag = true;
                 for (int i = 1; i < 5; i++)
                 {
-                    if (!GenerateFile(file1Content, file2Content, targetPath, i))
+                    if (!GenerateFile(file1Content, file2Content, targetDir, i))
                     {
                         flag = false;
                     }
                 }
                 if (flag)
                 {
-                    MessageBox.Show("Files successfully generated at: " + targetPath, "Success!", MessageBoxButtons.OK);
+                    MessageBox.Show("Files for " + GetFileNameFromPath(path1) + " successfully generated at: " + targetDir, "Success!", MessageBoxButtons.OK);
                 }
             }
         }
