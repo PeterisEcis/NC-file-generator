@@ -201,17 +201,14 @@ namespace NC_file_generator
             Header.Add(thickness);
             Header.Add(thickness);
             Header.Add(thickness);
-            Header.Add(file1Content[15]);
-            Header.Add(file1Content[16]);
-            Header.Add(file1Content[17]);
-            Header.Add(file1Content[18]);
-            Header.Add(file1Content[19]);
-            Header.Add(file1Content[20]);
-            Header.Add(file1Content[21]);
-            Header.Add(file1Content[22]);
-            Header.Add(file1Content[23]);
-            Header.Add(file1Content[24]);
-            Header.Add(file1Content[25]);
+            int lineNr = 15;
+            string line = file1Content[lineNr];
+            while(line.Length <2 || (line[0] != 'A' && line[1] != 'K'))
+            {
+                Header.Add(line);
+                lineNr++;
+                line = file1Content[lineNr];
+            }
             return Header;
         }
 
@@ -250,7 +247,7 @@ namespace NC_file_generator
                 {
                     string[] temp = strArr[0].Split('Q');
                     double profHeightTemp = RemoveLettersFromProfile(strArr[0]);
-                    profHeightTemp = profHeightTemp - GetProfileHeightDiff(fullProfile);
+                    profHeightTemp -= GetProfileHeightDiff(fullProfile);
                     profHeightTemp = Math.Round(profHeightTemp, 2);
                     ProfileHeight = profHeightTemp.ToString();
                     if (!ProfileHeight.Contains(".")) ProfileHeight += ".00";

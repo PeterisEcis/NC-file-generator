@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
@@ -35,7 +36,28 @@ namespace NC_file_generator
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            var validFiles = new List<string>();
+            string dir = textBox1.Text;
+            if (Directory.Exists(dir))
+            {
+                string[] filePaths = Directory.GetFiles(dir, "*.nc");
+                foreach(string path in filePaths)
+                {
+                    if (!path.Contains("_webs"))
+                    {
+                        string path2 = NCFile.GetSecondFilePath(path);
+                        if (File.Exists(path2))
+                        {
+                            listView1.Items.Add(NCFile.GetFileNameFromPath(path));
+                            listView1.Items.Add(NCFile.GetFileNameFromPath(path2));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                listView1.Clear();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

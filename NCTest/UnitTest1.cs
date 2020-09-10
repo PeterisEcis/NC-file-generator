@@ -269,7 +269,6 @@ namespace NCTest
     }
 
     [TestClass]
-
     public class DataGeneration
     {
         [TestMethod]
@@ -353,5 +352,100 @@ namespace NCTest
         //    var result = NCFile.ChangeCoordinates(data);
         //    Assert.AreEqual(expected, result);
         //}
+    }
+
+    [TestClass]
+    public class FileGeneration
+    {
+        [TestMethod]
+        public void File1()
+        {
+            string path1 = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22.nc";
+            string path2 = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22_webs.nc";
+            string targetDir = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\Results";
+
+            string expectedResultFile = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\ExpectedResults\\RG1D-22-1.nc";
+            string resultFile = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\Results\\RG1D-22-1.nc";
+            NCFile.GenerateAllFiles(path1, path2, targetDir);
+
+            var expected = NCFile.ReadFile(expectedResultFile);
+            var result = NCFile.ReadFile(resultFile);
+
+            Assert.AreEqual(expected.Count, result.Count);
+
+            for(int i=0; i<result.Count; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+
+            }
+        }
+        [TestMethod]
+        public void File2()
+        {
+            string path1 = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22.nc";
+            string path2 = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22_webs.nc";
+            string targetDir = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\Results";
+
+            string expectedResultFile = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\ExpectedResults\\RG1D-22-2.nc";
+            string resultFile = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\Results\\RG1D-22-2.nc";
+            NCFile.GenerateAllFiles(path1, path2, targetDir);
+
+            var expected = NCFile.ReadFile(expectedResultFile);
+            var result = NCFile.ReadFile(resultFile);
+
+            Assert.AreEqual(expected.Count, result.Count);
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+
+            }
+        }
+
+        [TestMethod]
+        public void File3()
+        {
+            string path1 = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22.nc";
+            string path2 = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22_webs.nc";
+            string targetDir = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\Results";
+
+            string expectedResultFile = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\ExpectedResults\\RG1D-22-3.nc";
+            string resultFile = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\Results\\RG1D-22-3.nc";
+            NCFile.GenerateAllFiles(path1, path2, targetDir);
+
+            var expected = NCFile.ReadFile(expectedResultFile);
+            var result = NCFile.ReadFile(resultFile);
+
+            Assert.AreEqual(expected.Count, result.Count);
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+
+            }
+        }
+
+        [TestMethod]
+        public void File4()
+        {
+            string path1 = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22.nc";
+            string path2 = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\RG1D-22_webs.nc";
+            string targetDir = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\Results";
+
+            string expectedResultFile = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\ExpectedResults\\RG1D-22-4.nc";
+            string resultFile = "C:\\Users\\peteris.ecis\\Documents\\GitHub\\NC-file-generator\\Testing\\Results\\RG1D-22-4.nc";
+            NCFile.GenerateAllFiles(path1, path2, targetDir);
+
+            var expected = NCFile.ReadFile(expectedResultFile);
+            var result = NCFile.ReadFile(resultFile);
+
+            Assert.AreEqual(expected.Count, result.Count);
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+
+            }
+        }
     }
 }
