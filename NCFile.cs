@@ -12,7 +12,7 @@ namespace NC_file_generator
 {
     public class NCFile
     {
-        public static void GenerateAllFiles(string path1, string path2, string targetDir)
+        public static bool GenerateAllFiles(string path1, string path2, string targetDir)
         {
             if (!Directory.Exists(targetDir))
             {
@@ -43,9 +43,10 @@ namespace NC_file_generator
                 }
                 if (flag)
                 {
-                    MessageBox.Show("Files for " + GetFileNameFromPath(path1) + " successfully generated at: " + targetDir, "Success!", MessageBoxButtons.OK);
+                    return true;
                 }
             }
+        return false;
         }
 
         public static string GetSecondFilePath(string filePath)
@@ -245,7 +246,6 @@ namespace NC_file_generator
             {
                 if (nr != 3)
                 {
-                    string[] temp = strArr[0].Split('Q');
                     double profHeightTemp = RemoveLettersFromProfile(strArr[0]);
                     profHeightTemp -= GetProfileHeightDiff(fullProfile);
                     profHeightTemp = Math.Round(profHeightTemp, 2);

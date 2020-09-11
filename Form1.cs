@@ -36,7 +36,6 @@ namespace NC_file_generator
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            var validFiles = new List<string>();
             string dir = textBox1.Text;
             if (Directory.Exists(dir))
             {
@@ -48,15 +47,15 @@ namespace NC_file_generator
                         string path2 = NCFile.GetSecondFilePath(path);
                         if (File.Exists(path2))
                         {
-                            listView1.Items.Add(NCFile.GetFileNameFromPath(path));
-                            listView1.Items.Add(NCFile.GetFileNameFromPath(path2));
+                            textBox3.AppendText(NCFile.GetFileNameFromPath(path)+'\n');
+                            textBox3.AppendText(NCFile.GetFileNameFromPath(path2)+'\n');
                         }
                     }
                 }
             }
             else
             {
-                listView1.Clear();
+                textBox3.Clear();
             }
         }
 
@@ -64,24 +63,38 @@ namespace NC_file_generator
         {
             string sourceDir = textBox1.Text;
             string targetDir = textBox2.Text;
+            string SuccessFiles = "";
+            string FailedFiles = "";
             if (Directory.Exists(sourceDir))
             {
                 string[] filePaths = Directory.GetFiles(sourceDir, "*.nc");
                 if (filePaths.Length == 0) MessageBox.Show("No .nc files were found in " + sourceDir, "Error", MessageBoxButtons.OK);
-                foreach (string path in filePaths)
+                else
                 {
-                    if (!path.Contains("_webs"))
+                    foreach (string path in filePaths)
                     {
-                        string path2 = NCFile.GetSecondFilePath(path);
-                        if (File.Exists(path2))
+                        if (!path.Contains("_webs"))
                         {
-                            NCFile.GenerateAllFiles(path,path2,targetDir);
-                        }
-                        else
-                        {
-                            MessageBox.Show("_webs file for " + NCFile.GetFileNameFromPath(path) + " was not found", "Error", MessageBoxButtons.OK);
+                            string path2 = NCFile.GetSecondFilePath(path);
+                            if (File.Exists(path2))
+                            {
+                                //MessageBox.Show(path);
+                                if (NCFile.GenerateAllFiles(path, path2, targetDir))
+                                {
+                                    SuccessFiles += NCFile.GetFileNameFromPath(path) + '\n';
+                                }
+                                else
+                                {
+                                    FailedFiles += NCFile.GetFileNameFromPath(path) + '\n';
+                                }
+                            }
+                            //else
+                            //{
+                            //    MessageBox.Show("_webs file for " + NCFile.GetFileNameFromPath(path) + " was not found", "Error", MessageBoxButtons.OK);
+                            //}
                         }
                     }
+                    MessageBox.Show("Successfully generated files for:\n" + SuccessFiles + "File generation failed for:\n" + FailedFiles);
                 }
             }
             else
