@@ -25,11 +25,11 @@ namespace NC_file_generator
             
             if (file1Content.Count == 0)
             {
-                MessageBox.Show("File " + path1 + " is empty", "Error", MessageBoxButtons.OK);
+                //MessageBox.Show("File " + path1 + " is empty", "Error", MessageBoxButtons.OK);
             }
             else if (file2Content.Count == 0)
             {
-                MessageBox.Show("File " + path2 + " is empty", "Error", MessageBoxButtons.OK);
+                //MessageBox.Show("File " + path2 + " is empty", "Error", MessageBoxButtons.OK);
             }
             else
             {
@@ -339,9 +339,8 @@ namespace NC_file_generator
 
         public static List<string> GetMainDataForFile(int nr, List<string> fileContent)
         {
-            var data = new List<string>();
+            var tempData = new List<string>();
             int lineNr = GetLineNr(nr, fileContent);
-            data.Add(fileContent[lineNr]);
             string temp = fileContent[++lineNr];
             temp = temp.Remove(2, 1).Insert(2, "v");
             if (char.IsLetter(temp[14]))
@@ -352,7 +351,7 @@ namespace NC_file_generator
             {
                 temp = temp.Remove(25, 1).Insert(25, " ");
             }
-            data.Add(temp);
+            tempData.Add(temp);
             string line = fileContent[++lineNr];
             while ((line[0] != 'A' && line[1] != 'K') && (line[0] != 'B' && line[1] != 'O'))
             {
@@ -360,10 +359,13 @@ namespace NC_file_generator
                 {
                     line = line.Remove(25, 1).Insert(25, " ");
                 }
-                data.Add(line);
+                tempData.Add(line);
                 lineNr++;
                 line = fileContent[lineNr];
             }
+            var data = ChangeCoordinates(tempData);
+            lineNr = GetLineNr(nr, fileContent);
+            data.Insert(0, fileContent[lineNr]);
             return data;
         }
         public static List<string> GetBOData(int nr, List<string> fileContent)
